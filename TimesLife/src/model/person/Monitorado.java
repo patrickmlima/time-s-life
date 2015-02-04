@@ -1,13 +1,14 @@
 package model.person;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Monitorado extends Pessoa implements Monitoravel {
 	
-	private boolean ativo;
 	private float peso;
 	private float altura;
-	private int bpm;
 	private int BATIMENTO_IDEAL_MINIMO;
-	private int BATIMENTO_IDAL_MAXIMO;
+	private int BATIMENTO_IDEAL_MAXIMO;
 	
 	public Monitorado() {
 		super();
@@ -15,25 +16,17 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	
 	public Monitorado(String nome, String dataNasc, String endereco, String telefone,
 			float peso, float altura) {
-		super(nome, dataNasc, endereco, telefone, Categoria.MONITORADO);
+		super(nome, dataNasc, endereco, telefone);
 		this.peso = peso;
 		this.altura = altura;
-		this.ativo = false;
 		calcularBatimentosIdeais();
 	}
 	
 	@Override
 	public void calcularBatimentosIdeais() {
-		// TODO Auto-generated method stub
+		BATIMENTO_IDEAL_MAXIMO = 180;
+		BATIMENTO_IDEAL_MINIMO = 80;
 		
-	}
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
 	}
 
 	public float getPeso() {
@@ -52,13 +45,6 @@ public class Monitorado extends Pessoa implements Monitoravel {
 		this.altura = altura;
 	}
 
-	public int getBpm() {
-		return bpm;
-	}
-
-	public void setBpm(int bpm) {
-		this.bpm = bpm;
-	}
 
 	public int getBATIMENTO_IDEAL_MINIMO() {
 		return BATIMENTO_IDEAL_MINIMO;
@@ -69,11 +55,11 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	}
 
 	public int getBATIMENTO_IDAL_MAXIMO() {
-		return BATIMENTO_IDAL_MAXIMO;
+		return BATIMENTO_IDEAL_MAXIMO;
 	}
 
-	public void setBATIMENTO_IDAL_MAXIMO(int bATIMENTO_IDAL_MAXIMO) {
-		BATIMENTO_IDAL_MAXIMO = bATIMENTO_IDAL_MAXIMO;
+	public void setBATIMENTO_IDAL_MAXIMO(int bATIMENTO_IDEAL_MAXIMO) {
+		BATIMENTO_IDEAL_MAXIMO = bATIMENTO_IDEAL_MAXIMO;
 	}
 		
 }

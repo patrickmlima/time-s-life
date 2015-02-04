@@ -1,31 +1,35 @@
 package model.person;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Pessoa {
-	private int identificador;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer identificador;
 	private String nome;
 	private String dataNasc;
 	private String endereco;
 	private String telefone;
-	private Categoria categoria;
 	
 	public Pessoa() {
 		
 	}
 	
-	public Pessoa(String nome, String dataNasc, String endereco, String telefone,
-			Categoria categoria) {
+	public Pessoa(String nome, String dataNasc, String endereco, String telefone) {
 		this.nome = nome;
 		this.dataNasc = dataNasc;
 		this.endereco = endereco;
 		this.telefone = telefone;
-		this.categoria = categoria;
 	}
 
-	public int getIdentificador() {
+	public Integer getIdentificador() {
 		return identificador;
 	}
 
-	public void setIdentificador(int identificador) {
+	public void setIdentificador(Integer identificador) {
 		this.identificador = identificador;
 	}
 
@@ -60,14 +64,5 @@ public class Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-	
 	
 }
