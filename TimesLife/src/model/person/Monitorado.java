@@ -47,14 +47,14 @@ public class Monitorado extends Pessoa implements Monitoravel {
 
 
 	public int getBATIMENTO_IDEAL_MINIMO() {
-		return BATIMENTO_IDEAL_MINIMO;
+		return BATIMENTO_IDEAL_MINIMO; 
 	}
 
 	public void setBATIMENTO_IDEAL_MINIMO(int bATIMENTO_IDEAL_MINIMO) {
 		BATIMENTO_IDEAL_MINIMO = bATIMENTO_IDEAL_MINIMO;
 	}
 
-	public int getBATIMENTO_IDAL_MAXIMO() {
+	public int getBATIMENTO_IDEAL_MAXIMO() {
 		return BATIMENTO_IDEAL_MAXIMO;
 	}
 

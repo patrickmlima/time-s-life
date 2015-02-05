@@ -9,6 +9,9 @@ public class Usuario extends Pessoa {
 	@Enumerated(EnumType.STRING)
 	TipoUsuario tipo;
 	
+	public Usuario() {
+	}
+	
 	public Usuario(String nome, String dataNasc, String endereco, String telefone, TipoUsuario tipo) {
 		super(nome, dataNasc, endereco, telefone);
 		this.tipo = tipo;
