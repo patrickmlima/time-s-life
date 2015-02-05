@@ -1,12 +1,13 @@
 package model.dao;
 
+import java.io.Serializable;
+
 import model.person.Pessoa;
 
-public interface PessoaDAO {
-	
-	public void adicionar(Pessoa pessoa);
-	public Pessoa consultar(Integer identificador);
-	public void editar(Pessoa pessoa);
-	public void excluir(Pessoa pessoa);
-	public void listar();
+public class PessoaDAO extends AbstractDao<Pessoa> implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		
 }
