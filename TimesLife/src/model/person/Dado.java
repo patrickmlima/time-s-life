@@ -10,11 +10,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import model.dao.AbstractEntity;
+
 @Entity
-public class Dado {
-	
+public class Dado extends AbstractEntity<Integer> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer ID;
+	private Integer id;
 	
 	@ManyToOne
 	private Monitorado monitorado;
@@ -26,6 +32,10 @@ public class Dado {
 	private double latitude;
 	private double longitude;
 	
+	public Dado() {
+		
+	}
+	
 	public Dado(Monitorado monitorado, int bpm, double latitude, double longitude) {
 		this.monitorado = monitorado;
 		this.bpm = bpm;
@@ -36,7 +46,7 @@ public class Dado {
 	
 	public Dado(int id_monitorado, int bpm, double latitude, double longitude) {
 		this(new Monitorado(), bpm, latitude, longitude);
-		this.monitorado.setIdentificador(id_monitorado);
+		this.monitorado.setId(id_monitorado);
 	}
 	
 	public int getBpm() {
@@ -55,12 +65,12 @@ public class Dado {
 		this.time = time;
 	}
 
-	public Integer getID() {
-		return ID;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public double getLatitude() {
@@ -79,5 +89,7 @@ public class Dado {
 		this.longitude = longitude;
 	}
 	
-	
+	public Monitorado getMonitorado() {
+		return this.monitorado;
+	}
 }
