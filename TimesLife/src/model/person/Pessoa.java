@@ -4,11 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-public class Pessoa {
+import model.dao.AbstractEntity;
+
+@MappedSuperclass
+public class Pessoa extends AbstractEntity<Integer>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer identificador;
+	private Integer id;
 	private String nome;
 	private String dataNasc;
 	private String endereco;
@@ -25,12 +33,12 @@ public class Pessoa {
 		this.telefone = telefone;
 	}
 
-	public Integer getIdentificador() {
-		return identificador;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdentificador(Integer identificador) {
-		this.identificador = identificador;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
