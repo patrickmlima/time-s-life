@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 
 @Entity
 public class Monitorado extends Pessoa implements Monitoravel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private float peso;
 	private float altura;
