@@ -17,7 +17,6 @@ public class MonitoradoMB {
 	private PessoaDAO dao = new PessoaDAO();
 
 	public MonitoradoMB() {
-		monitoradosList = dao.listar();	
 	}
 
 	public Monitorado getMonitorado() {
