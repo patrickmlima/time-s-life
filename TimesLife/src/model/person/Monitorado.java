@@ -1,6 +1,10 @@
 package model.person;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Monitorado extends Pessoa implements Monitoravel {
@@ -13,6 +17,9 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	private float altura;
 	private int BATIMENTO_IDEAL_MINIMO;
 	private int BATIMENTO_IDEAL_MAXIMO;
+	
+	@ManyToMany(mappedBy="monitorados", fetch=FetchType.LAZY)
+	private List<Usuario> monitores;
 	
 	public Monitorado() {
 		super();
@@ -65,5 +72,12 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	public void setBATIMENTO_IDAL_MAXIMO(int bATIMENTO_IDEAL_MAXIMO) {
 		BATIMENTO_IDEAL_MAXIMO = bATIMENTO_IDEAL_MAXIMO;
 	}
-		
+	
+	public List<Usuario> getMonitores() {
+		return monitores;
+	}
+	
+	public void setMonitores(Usuario monitor) {
+		this.monitores.add(monitor);
+	}
 }
