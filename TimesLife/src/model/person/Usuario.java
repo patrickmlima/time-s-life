@@ -41,10 +41,7 @@ public class Usuario extends Pessoa {
 		return monitorados;
 	}
 
-	public void setMonitorados(List<Monitorado> monitorados) {
-		this.monitorados = monitorados;
-	}
-	
-	
-	
+	public void setMonitorados(Monitorado monitorado) {
+		this.monitorados.add(monitorado);
+	}	
 }
