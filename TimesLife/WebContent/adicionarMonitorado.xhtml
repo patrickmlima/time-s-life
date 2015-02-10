@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<title>Cadastro de monitorado</title>
@@ -12,9 +13,10 @@
 
 	<p:menubar>
 		<p:submenu label="Cadastrar">
-			<p:menuitem value="Usuário" url="adicionarMonitorado.xhtml" />
+			<p:menuitem value="Usuário" url="adicionarUsuario.xhtml" />
 			<p:menuitem value="Monitorado" url="adicionarMonitorado.xhtml" />
 		</p:submenu>
+		<p:menuitem value="Ver Monitorados" url="?" />
 	</p:menubar>
 
 	<h:form prependId="false">
@@ -41,6 +43,9 @@
 				<h:outputLabel value="Peso:" for="peso" />
 				<h:inputText id="peso" value="#{monitoradoMB.monitorado.peso}" />
 			</h:panelGroup>
+			<h:outputLabel value="Monitor" for="monitor" />
+			<h:inputText id="monitor"
+				value="#{monitoradoMB.monitorado.monitores}" />
 			<h:commandButton value="Salvar" action="#{monitoradoMB.salvar()}" />
 			<h:commandButton value="Listar" action="#{monitoradoMB.listar()}" />
 		</h:panelGrid>
@@ -64,7 +69,6 @@
 			<h:outputText value="#{monitorado.peso}" />
 		</p:column>
 	</p:dataTable>
-
 
 </h:body>
 </html>
