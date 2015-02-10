@@ -1,6 +1,7 @@
 package servico;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import model.dao.PessoaDAO;
 import model.person.Pessoa;
@@ -8,6 +9,7 @@ import model.person.TipoUsuario;
 import model.person.Usuario;
 
 @ManagedBean
+@RequestScoped
 public class UsuarioMB {
 	Usuario usuario = new Usuario();
 	TipoUsuario tipo;
@@ -21,8 +23,9 @@ public class UsuarioMB {
 		this.usuario = usuario;
 	}
 
-	public TipoUsuario getTipo() {
-		return tipo;
+	@SuppressWarnings("static-access")
+	public TipoUsuario[] getTipo() {
+		return tipo.values();
 	}
 
 	public void setTipo(TipoUsuario tipo) {
