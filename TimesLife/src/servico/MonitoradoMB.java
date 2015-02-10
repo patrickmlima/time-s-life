@@ -14,6 +14,7 @@ import model.person.Pessoa;
 public class MonitoradoMB {
 	private Monitorado monitorado = new Monitorado();
 	private List<Pessoa> monitoradosList;
+	private List<Pessoa> monitoresList;
 	private PessoaDAO dao = new PessoaDAO();
 
 	public MonitoradoMB() {
@@ -36,15 +37,14 @@ public class MonitoradoMB {
 	}
 
 	public List<Pessoa> getMonitoradosList() {
-		return monitoradosList;
+		return monitoresList;
 	}
 
-	public void setMonitoradosList(List<Pessoa> monitoradosList) {
-		this.monitoradosList = monitoradosList;
+	public void setMonitoradosList() {
+		this.monitoresList = dao.listar();
 	}
 
 	public void salvar() {
-
 		dao.adicionar(monitorado);
 	}
 
@@ -62,5 +62,6 @@ public class MonitoradoMB {
 	
 	public void listar() {
 		monitoradosList = dao.listar();
+		System.out.println(""+monitoradosList.size());
 	}
 }
