@@ -33,7 +33,11 @@
 			<h:outputLabel value="Telefone:" for="telefone" />
 			<h:inputText id="telefone" value="#{usuarioMB.usuario.telefone}" />
 			<h:outputLabel value="Tipo" for="tipo" />
-
+			<h:selectOneMenu id="tipo" value="#{usuarioMB.usuario.tipo}">
+				<f:selectItems value="#{usuarioMB.tipo}" var="tipo"
+					itemValue="#{tipo}" itemLabel="#{tipo.label}" />
+			</h:selectOneMenu>
+			<h:commandButton value="Salvar" action="#{usuarioMB.salvar()}" />
 		</h:panelGrid>
 
 	</h:form>
