@@ -1,5 +1,6 @@
 package model.person;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,6 +23,7 @@ public class Usuario extends Pessoa {
 	
 	
 	public Usuario() {
+		monitorados = new LinkedList<Monitorado>();
 	}
 	
 	public Usuario(String nome, String dataNasc, String endereco, String telefone, TipoUsuario tipo) {

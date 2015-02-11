@@ -3,7 +3,7 @@ package servico;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import model.dao.PessoaDAO;
+import model.dao.UsuarioDao;
 import model.person.Pessoa;
 import model.person.TipoUsuario;
 import model.person.Usuario;
@@ -13,8 +13,8 @@ import model.person.Usuario;
 public class UsuarioMB {
 	Usuario usuario = new Usuario();
 	TipoUsuario tipo;
-	PessoaDAO dao = new PessoaDAO();
-	
+	UsuarioDao dao = new UsuarioDao();
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -32,27 +32,27 @@ public class UsuarioMB {
 		this.tipo = tipo;
 	}
 
-	public PessoaDAO getDao() {
+	public UsuarioDao getDao() {
 		return dao;
 	}
 
-	public void setDao(PessoaDAO dao) {
+	public void setDao(UsuarioDao dao) {
 		this.dao = dao;
 	}
 
 	public void salvar() {
 		dao.adicionar(usuario);
 	}
-	
+
 	public Pessoa buscar() {
 		return dao.buscar(usuario);
 	}
-	
+
 	public void editar() {
 		dao.editar(usuario);
 	}
-	
+
 	public void excluir() {
 		dao.remover(usuario);
-	}	
+	}
 }

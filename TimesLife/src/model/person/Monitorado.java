@@ -1,5 +1,6 @@
 package model.person;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	private List<Usuario> monitores;
 	
 	public Monitorado() {
-		super();
+		monitores = new LinkedList<Usuario>();
 	}
 	
 	public Monitorado(String nome, String dataNasc, String endereco, String telefone,
