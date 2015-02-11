@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Insert title here</title>
+</h:head>
+<ui:composition template="_templateAdminMenu.xhtml">
+	<ui:define name="conteudo">
+		<h:form prependId="false">
+			<h:panelGrid columns="2"
+				columnsClasses="colunaEsquerda,colunaDireita" rowClasses="normal"
+				headerClass="cadastroMonitorado">
+				<f:facet name="header">
+					<h:outputLabel value="Cadastro de Monitorado" />
+				</f:facet>
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="nome" size="50"
+					value="#{monitoradoMB.monitorado.nome}" />
+				<h:outputLabel value="Data de nascimento:" for="dtNascimento" />
+				<h:inputText id="dtNascimento" size="10"
+					value="#{monitoradoMB.monitorado.dataNasc}" />
+				<h:outputLabel value="Endereço:" for="endereco" />
+				<h:inputText id="endereco"
+					value="#{monitoradoMB.monitorado.endereco}" />
+				<h:outputLabel value="Telefone:" for="telefone" />
+				<h:inputText id="telefone"
+					value="#{monitoradoMB.monitorado.telefone}" />
+				<h:outputLabel value="Altura:" for="altura" />
+				<h:panelGroup>
+					<h:inputText id="altura" value="#{monitoradoMB.monitorado.altura}" />
+					<h:outputLabel value="Peso:" for="peso" />
+					<h:inputText id="peso" value="#{monitoradoMB.monitorado.peso}" />
+				</h:panelGroup>
+				<!-- 
+				<h:outputLabel value="Monitor:" for="monitor" />
+				<h:selectOneMenu id="monitor" value="#{monitoradoMB.monitorado.monitores}">
+					<f:selectItems value="#{monitoradoMB.monitoresList}" var="monitor"
+						itemValue="#{monitor}" itemLabel="#{monitor.nome}" />
+				</h:selectOneMenu>
+				 -->
+				<p:commandButton value="Adicionar" action="#{monitoradoMB.salvar()}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
