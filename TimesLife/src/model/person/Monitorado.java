@@ -1,5 +1,7 @@
 package model.person;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,14 +21,14 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	private int BATIMENTO_IDEAL_MINIMO;
 	private int BATIMENTO_IDEAL_MAXIMO;
 	
-	@ManyToMany(mappedBy="monitorados", fetch=FetchType.LAZY)
+	@ManyToMany(mappedBy="monitorados", fetch=FetchType.EAGER)
 	private List<Usuario> monitores;
 	
 	public Monitorado() {
 		monitores = new LinkedList<Usuario>();
 	}
 	
-	public Monitorado(String nome, String dataNasc, String endereco, String telefone,
+	public Monitorado(String nome, Calendar dataNasc, String endereco, String telefone,
 			float peso, float altura) {
 		super(nome, dataNasc, endereco, telefone);
 		this.peso = peso;
@@ -34,11 +36,34 @@ public class Monitorado extends Pessoa implements Monitoravel {
 		calcularBatimentosIdeais();
 	}
 	
+	//deixar mais preciso
+	public int calculaIdade() {
+		Calendar atual = Calendar.getInstance();
+		Calendar dtNasc = getDataNasc();
+		int idade = atual.get(Calendar.YEAR) - dtNasc.get(Calendar.YEAR);
+		return idade;
+	}
+	
+	//para maior precisão, incluir sexo
 	@Override
 	public void calcularBatimentosIdeais() {
-		BATIMENTO_IDEAL_MAXIMO = 180;
-		BATIMENTO_IDEAL_MINIMO = 80;
-		
+		int idade = calculaIdade();
+		if(idade == 0) {
+			setBATIMENTO_IDAL_MAXIMO(160);
+			setBATIMENTO_IDEAL_MINIMO(130);
+		} else if(idade > 0 && idade < 1) {
+			setBATIMENTO_IDAL_MAXIMO(130);
+			setBATIMENTO_IDEAL_MINIMO(110);
+		} else if(idade >= 1 && idade < 7) {
+			setBATIMENTO_IDAL_MAXIMO(120);
+			setBATIMENTO_IDEAL_MINIMO(80);
+		} else if(idade >= 7 && idade < 18) {
+			setBATIMENTO_IDAL_MAXIMO(90);
+			setBATIMENTO_IDEAL_MINIMO(80);
+		} else {
+			setBATIMENTO_IDAL_MAXIMO(80);
+			setBATIMENTO_IDEAL_MINIMO(60);
+		}
 	}
 
 	public float getPeso() {
