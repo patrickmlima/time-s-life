@@ -13,14 +13,14 @@ import javax.persistence.TemporalType;
 import model.dao.AbstractEntity;
 
 @Entity
-public class Dado extends AbstractEntity<Integer> {
+public class Dado extends AbstractEntity<Long> {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@ManyToOne
 	private Monitorado monitorado;
@@ -44,7 +44,7 @@ public class Dado extends AbstractEntity<Integer> {
 		this.time = Calendar.getInstance();
 	}
 	
-	public Dado(int id_monitorado, int bpm, double latitude, double longitude) {
+	public Dado(Long id_monitorado, int bpm, double latitude, double longitude) {
 		this(new Monitorado(), bpm, latitude, longitude);
 		this.monitorado.setId(id_monitorado);
 	}
@@ -65,11 +65,11 @@ public class Dado extends AbstractEntity<Integer> {
 		this.time = time;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
