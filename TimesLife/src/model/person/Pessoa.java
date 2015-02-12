@@ -1,23 +1,30 @@
 package model.person;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import model.dao.AbstractEntity;
 
 @MappedSuperclass
-public class Pessoa extends AbstractEntity<Integer>{
+public class Pessoa extends AbstractEntity<Long>{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nome;
-	private String dataNasc;
+	@Temporal(TemporalType.DATE)
+	private Calendar dataNasc;
 	private String endereco;
 	private String telefone;
 	
@@ -25,18 +32,18 @@ public class Pessoa extends AbstractEntity<Integer>{
 		
 	}
 	
-	public Pessoa(String nome, String dataNasc, String endereco, String telefone) {
+	public Pessoa(String nome, Calendar dataNasc, String endereco, String telefone) {
 		this.nome = nome;
 		this.dataNasc = dataNasc;
 		this.endereco = endereco;
 		this.telefone = telefone;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -46,14 +53,15 @@ public class Pessoa extends AbstractEntity<Integer>{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
+	} 
 
-	public String getDataNasc() {
+	public Calendar getDataNasc() {
 		return dataNasc;
 	}
 
-	public void setDataNasc(String dataNasc) {
-		this.dataNasc = dataNasc;
+	public void setDataNasc(Date date) {
+		dataNasc = Calendar.getInstance();
+		dataNasc.setTime(date);
 	}
 
 	public String getEndereco() {
