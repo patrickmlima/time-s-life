@@ -1,5 +1,7 @@
 package model.teste;
 
+import java.util.Calendar;
+
 import model.dao.MonitoradoDao;
 import model.dao.UsuarioDao;
 import model.person.Monitorado;
@@ -14,7 +16,9 @@ public class PopulaTudo {
 		Monitorado mon1 = new Monitorado();
 		mon1.setNome("monitorado teste1");
 		mon1.setEndereco("rua 1");
-		mon1.setDataNasc("21/12/194");
+		Calendar c = Calendar.getInstance();
+		c.set(1998, 12, 21);
+		mon1.setDataNasc(c);
 		mon1.setAltura(1.60f);
 		mon1.setPeso(60.5f);
 		mon1.setTelefone("991919191");
@@ -24,7 +28,8 @@ public class PopulaTudo {
 		Monitorado mon2 = new Monitorado();
 		mon2.setNome("monitorado teste2");
 		mon2.setEndereco("rua 2");
-		mon2.setDataNasc("22/22/1996");
+		c.set(1996, 12, 22);
+		mon2.setDataNasc(c);
 		mon2.setAltura(1.70f);
 		mon2.setPeso(65.0f);
 		mon2.setTelefone("992929292");
@@ -34,7 +39,8 @@ public class PopulaTudo {
 		Usuario user1 = new Usuario();
 		user1.setNome("usuario teste1");
 		user1.setEndereco("rua 01");
-		user1.setDataNasc("11/11/1911");
+		c.set(1911, 11, 11);
+		user1.setDataNasc(c);
 		user1.setTelefone("992939192");
 		user1.setTipo(TipoUsuario.MONITOR);
 		user1.setMonitorados(mon1);
