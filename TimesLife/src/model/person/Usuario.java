@@ -1,5 +1,6 @@
 package model.person;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Usuario extends Pessoa {
 		monitorados = new LinkedList<Monitorado>();
 	}
 	
-	public Usuario(String nome, String dataNasc, String endereco, String telefone, TipoUsuario tipo) {
+	public Usuario(String nome, Calendar dataNasc, String endereco, String telefone, TipoUsuario tipo) {
 		super(nome, dataNasc, endereco, telefone);
 		this.tipo = tipo;
 	}
