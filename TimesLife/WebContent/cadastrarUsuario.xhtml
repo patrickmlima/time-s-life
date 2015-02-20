@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Cadastrar Usuário</title>
+</h:head>
+<ui:composition template="_templateAdminMenu.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form1" prependId="false">
+			<h:panelGrid id="grid" columns="4"
+				columnsClasses="colunaEsquerda,colunaDireita" rowClasses="normal"
+				headerClass="cadastroMonitorado">
+				<f:facet name="header">
+					<p:outputLabel value="Cadastro de Usuário" />
+				</f:facet>
+
+				<p:outputLabel value="Nome:" for="nome" />
+				<p:inputText id="nome" size="50" value="#{usuarioMB.usuario.nome}"
+					required="true" />
+				<p:message for="nome" />
+				<p:tooltip id="toolTipNome" for="nome"
+					value="Digite o nome do usuário" />
+
+				<p:outputLabel value="Data de nascimento:" for="dtNascimento" />
+				<p:calendar id="dtNascimento" value="#{usuarioMB.dataNasc}"
+					pattern="dd/MM/yyyy" mask="true" locale="pt_BR" required="true" />
+				<p:message for="dtNascimento" />
+				<p:tooltip id="toolTipDtNascimento" for="dtNascimento"
+					value="Selecione a data de nascimento do usuário" />
+
+				<p:outputLabel value="Endereço:" for="endereco" />
+				<p:inputText id="endereco" value="#{usuarioMB.usuario.endereco}"
+					required="true" />
+				<p:message for="endereco" />
+				<p:tooltip id="toolTipEndereco" for="endereco"
+					value="Informe o endereço do usuário" />
+
+				<p:outputLabel value="Telefone:" for="telefone" />
+				<p:inputText id="telefone" size="14"
+					value="#{usuarioMB.usuario.telefone}" required="true" />
+				<p:message for="telefone" />
+				<p:tooltip id="toolTipTelefone" for="telefone"
+					value="Digite o telefone do usuário" />
+
+				<p:outputLabel value="Tipo" for="tipo" />
+				<p:selectOneMenu id="tipo" value="#{usuarioMB.usuario.tipo}">
+					<f:selectItems value="#{usuarioMB.tipo}" var="tipo"
+						itemValue="#{tipo}" itemLabel="#{tipo.label}" />
+				</p:selectOneMenu>
+				<p:tooltip id="toolTipTipo" for="tipo"
+					value="Selecione o tipo de usuário a ser cadastrado" />
+					
+				<p:outputLabel value=" " />
+				<p:outputLabel value=" " />
+				<p:commandButton value="Salvar" icon="ui-icon-disk"
+					action="#{usuarioMB.salvar}" update="grid dlg" />
+			</h:panelGrid>
+
+
+			<p:dialog id="dlg" header="#{dialogMB.tituloDialog}"
+				widgetVar="dlgOk" modal="true" resizable="false" draggable="false">
+				<h:form>
+					<h:panelGrid id="dlg" columns="1" rowClasses="normal"
+						headerClass="dialogOk" style="text-align:center">
+						<p:outputLabel value="#{dialogMB.mensagemDialog}" />
+						<p:commandButton value="OK" onclick="PF('dlgOk').hide();" />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

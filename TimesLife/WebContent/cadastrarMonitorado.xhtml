@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Adicionar monitorado</title>
+</h:head>
+<ui:composition template="_templateAdminMenu.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="form1" prependId="false">
+			<h:panelGrid id="grid" columns="4"
+				columnsClasses="colunaEsquerda,colunaDireita" rowClasses="normal"
+				headerClass="cadastroMonitorado">
+				<f:facet name="header">
+					<p:outputLabel value="Cadastro de Monitorado" />
+				</f:facet>
+
+				<p:outputLabel value="Nome:" for="nome" />
+				<p:inputText id="nome" size="50"
+					value="#{monitoradoMB.monitorado.nome}" required="true" />
+				<p:message for="nome" />
+				<p:tooltip id="toolTipNome" for="nome"
+					value="Insira o nome completo do usuário" />
+
+				<p:outputLabel value="Data de nascimento:" for="dtNascimento" />
+				<p:calendar id="dtNascimento" value="#{monitoradoMB.dataNasc}"
+					pattern="dd/MM/yyyy" mask="true" locale="pt_BR" required="true" />
+				<p:message for="dtNascimento" />
+				<p:tooltip id="toolTipDtNascimento" for="dtNascimento"
+					value="Selecione a data de nascimento" />
+
+				<p:outputLabel value="Endereço:" for="endereco" />
+				<p:inputText id="endereco"
+					value="#{monitoradoMB.monitorado.endereco}" required="true" />
+				<p:message for="endereco" />
+				<p:tooltip id="toolTipEndereco" for="endereco"
+					value="Digite o endereço do monitorado" />
+
+				<p:outputLabel value="Telefone:" for="telefone" />
+				<p:inputText id="telefone" size="14"
+					value="#{monitoradoMB.monitorado.telefone}" required="true" />
+				<p:message for="telefone" />
+				<p:tooltip id="toolTipTelefone" for="telefone"
+					value="Digite o telefone do monitorado" />
+
+				<p:outputLabel value="Altura:" for="altura" />
+				<p:inputText id="altura" value="#{monitoradoMB.monitorado.altura}"
+					required="true" />
+				<p:message for="altura" />
+				<p:tooltip id="toolTipAltura" for="altura"
+					value="Digite a altura do monitorado" />
+
+				<p:outputLabel value="Peso:" for="peso" />
+				<p:inputText id="peso" value="#{monitoradoMB.monitorado.peso}"
+					required="true" />
+				<p:message for="peso" />
+				<p:tooltip id="toolTipPeso" for="peso"
+					value="Digite o peso do monitorado" />
+
+				<!-- <h:outputLabel value="Monitor:" for="monitor" />
+				<h:selectOneMenu id="monitor" value="#{monitoradoMB.monitorado.monitores}">
+					<f:selectItems value="#{monitoradoMB.monitoresList}" var="monitor"
+						itemValue="#{monitor}" itemLabel="#{monitor.nome}" />
+				</h:selectOneMenu>
+				 -->
+				<p:commandButton value="Adicionar" icon="ui-icon-disk"
+					action="#{monitoradoMB.salvar}" update="grid dlg" />
+			</h:panelGrid>
+
+			<p:dialog id="dlg" header="#{dialogMB.tituloDialog}"
+				widgetVar="dlgOk" modal="true" resizable="false" draggable="false"
+				icon="ui-icon-disk">
+				<h:form>
+					<h:panelGrid id="dlg" columns="1" rowClasses="normal"
+						headerClass="dialogOk" style="text-align:center">
+						<p:outputLabel value="#{dialogMB.mensagemDialog}" />
+						<p:commandButton value="OK" onclick="PF('dlgOk').hide();" />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
