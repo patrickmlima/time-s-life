@@ -58,6 +58,10 @@ public class Pessoa extends AbstractEntity<Long>{
 	public Calendar getDataNasc() {
 		return dataNasc;
 	}
+	
+	public String getDataNascString() {
+		return (new SimpleDateFormat("dd/MM/yyyy")).format(dataNasc.getTime());
+	}
 
 	public void setDataNasc(Date date) {
 		dataNasc = Calendar.getInstance();

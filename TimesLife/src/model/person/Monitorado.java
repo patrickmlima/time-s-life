@@ -1,12 +1,10 @@
 package model.person;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -21,7 +19,7 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	private int BATIMENTO_IDEAL_MINIMO;
 	private int BATIMENTO_IDEAL_MAXIMO;
 	
-	@ManyToMany(mappedBy="monitorados", fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="monitorados")
 	private List<Usuario> monitores;
 	
 	public Monitorado() {
@@ -103,7 +101,11 @@ public class Monitorado extends Pessoa implements Monitoravel {
 		return monitores;
 	}
 	
-	public void setMonitores(Usuario monitor) {
+	public void setMonitores(List<Usuario> monitores) {
+		this.monitores = monitores;
+	}
+	
+	public void addMonitor(Usuario monitor) {
 		this.monitores.add(monitor);
 	}
 }
