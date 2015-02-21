@@ -17,10 +17,10 @@ public class DialogMB {
 		return mensagemDialog;
 	}
 	
-	public static void showMessage(String title, String msg) {
+	public static void showMessage(String title, String msg, String dlgName) {
 		tituloDialog = title;
 		mensagemDialog = msg;
-		RequestContext.getCurrentInstance().execute("PF('dlgOk').show();");
+		RequestContext.getCurrentInstance().execute("PF('" + dlgName + "').show();");
 	}
 
 }
