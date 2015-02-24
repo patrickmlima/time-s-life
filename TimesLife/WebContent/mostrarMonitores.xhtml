@@ -13,7 +13,8 @@
 	<ui:define name="conteudo">
 
 		<h:form id="form">
-			<p:dataList id="listMonitores" value="#{mostrarMonitoresMB.monitoresList}" var="monitor"
+			<p:dataList id="listMonitores"
+				value="#{mostrarMonitoresMB.monitoresList}" var="monitor"
 				type="unordered" itemType="none" paginator="true" rows="15"
 				styleClass="paginated">
 
@@ -35,12 +36,11 @@
 			</p:dataList>
 
 			<p:dialog header="Dados do Monitor" widgetVar="detalheDialog"
-				modal="true" showEffect="blind" hideEffect="clip"
-				resizable="false">
+				modal="true" showEffect="blind" hideEffect="clip" resizable="false">
 				<p:outputPanel id="detalheMonitor" style="text-align:center;">
 					<p:panelGrid columns="2"
 						rendered="#{not empty mostrarMonitoresMB.monitorSelecionado}"
-						columnClasses="label,value" >
+						columnClasses="label,value">
 						<f:facet name="header">
 							<p:graphicImage library="img" name="logomarca.png" />
 						</f:facet>
@@ -49,19 +49,24 @@
 						<h:outputText value="#{mostrarMonitoresMB.monitorSelecionado.id}" />
 
 						<h:outputText value="Nome" />
-						<h:outputText value="#{mostrarMonitoresMB.monitorSelecionado.nome}" />
+						<h:outputText
+							value="#{mostrarMonitoresMB.monitorSelecionado.nome}" />
 
 						<h:outputText value="Data de nascimento" />
-						<h:outputText value="#{mostrarMonitoresMB.monitorSelecionado.dataNascString}" />
+						<h:outputText
+							value="#{mostrarMonitoresMB.monitorSelecionado.dataNascString}" />
 
 						<h:outputText value="Endereço" />
-						<h:outputText value="#{mostrarMonitoresMB.monitorSelecionado.endereco}" />
+						<h:outputText
+							value="#{mostrarMonitoresMB.monitorSelecionado.endereco}" />
 
 						<h:outputText value="Telefone" />
-						<h:outputText value="#{mostrarMonitoresMB.monitorSelecionado.telefone}" />
+						<h:outputText
+							value="#{mostrarMonitoresMB.monitorSelecionado.telefone}" />
 					</p:panelGrid>
 
-					<p:panelGrid columns="1" columnClasses="button" style="margin: 0 auto;">
+					<p:panelGrid columns="1" columnClasses="button"
+						style="margin: 0 auto;">
 						<p:commandButton value="Excluir" icon="ui-icon-trash"
 							onclick="PF('confirmDlg').show();">
 							<p:confirm header="Atenção"
@@ -73,14 +78,16 @@
 							icon="ui-icon-note" />
 
 						<p:commandButton value="Adicionar monitorado a sua lista"
-							icon="ui-icon-plus" action="incluirMonitoradoLista.xhtml"/>
+							icon="ui-icon-plus" action="incluirMonitoradoLista.xhtml"
+							ajax="false">
+						</p:commandButton>
 
 					</p:panelGrid>
 
 				</p:outputPanel>
 			</p:dialog>
-			</h:form>
-		
+		</h:form>
+
 		<p:confirmDialog widgetVar="confirmDlg" global="true"
 			showEffect="fade" hideEffect="drop">
 			<h:form>
@@ -93,8 +100,8 @@
 					icon="ui-icon-close" onclick="PF('confirmDlg').hide();" />
 			</h:form>
 		</p:confirmDialog>
-		
-		
+
+
 	</ui:define>
 </ui:composition>
 </html>
