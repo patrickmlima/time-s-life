@@ -1,5 +1,6 @@
 package servico;
 
+import java.io.Serializable;
 import java.util.List;
 
 import model.dao.MonitoradoDao;
@@ -7,7 +8,12 @@ import model.dao.UsuarioDao;
 import model.person.Monitorado;
 import model.person.Usuario;
 
-public class ServicoDAO {
+public class ServicoDAO implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private MonitoradoDao monitoradoDao = new MonitoradoDao();
 	private UsuarioDao usuarioDao = new UsuarioDao();	
 	

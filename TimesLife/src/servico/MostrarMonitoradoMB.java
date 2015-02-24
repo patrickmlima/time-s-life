@@ -1,16 +1,22 @@
 package servico;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import model.person.Monitorado;
 import model.person.Usuario;
 
 @ManagedBean
-@ViewScoped
-public class MostrarMonitoradoMB {
+@SessionScoped
+public class MostrarMonitoradoMB implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private List<Usuario> monitoresList;
 	private List<Monitorado> monitoradosList;
 	private Monitorado monitoradoSelecionado;

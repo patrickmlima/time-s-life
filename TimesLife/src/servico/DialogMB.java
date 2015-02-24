@@ -1,11 +1,18 @@
 package servico;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 
 import org.primefaces.context.RequestContext;
 
 @ManagedBean
-public class DialogMB {
+public class DialogMB implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private static String tituloDialog;
 	private static String mensagemDialog;
 	

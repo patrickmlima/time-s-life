@@ -1,5 +1,6 @@
 package servico;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -10,7 +11,12 @@ import model.person.Usuario;
 
 @ManagedBean
 @ViewScoped
-public class CadastrarUsuarioMB {
+public class CadastrarUsuarioMB implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Usuario usuario = new Usuario();
 	private Date dataNasc;
 	private TipoUsuario tipo;
