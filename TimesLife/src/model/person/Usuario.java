@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,7 +20,7 @@ public class Usuario extends Pessoa {
 	@Enumerated(EnumType.STRING)
 	private TipoUsuario tipo;
 	
-	@ManyToMany
+	@ManyToMany(targetEntity=Monitorado.class, cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	private List<Monitorado> monitorados;
 	
 	
@@ -45,6 +46,9 @@ public class Usuario extends Pessoa {
 	}
 
 	public void setMonitorados(Monitorado monitorado) {
-		this.monitorados.add(monitorado);
+		if(!monitorados.contains(monitorado)) {
+			monitorados.add(monitorado);
+			monitorado.setMonitores(this);
+		}
 	}	
 }
