@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 import model.dao.AbstractEntity;
 
 @MappedSuperclass
-public class Pessoa extends AbstractEntity<Long>{
+public class Pessoa extends AbstractEntity {
 	/**
 	 * 
 	 */

@@ -2,10 +2,11 @@ package servico;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import model.person.Monitorado;
 import model.person.Usuario;
@@ -21,13 +22,16 @@ public class MostrarMonitoresMB implements Serializable {
 	private List<Usuario> monitoresList;
 	private Usuario monitorSelecionado;
 	
+	private Monitorado novoMonitorado;
+	
 	private ServicoDAO dao = new ServicoDAO();
 	
 	public MostrarMonitoresMB() {
-		monitoresList = dao.listarMonitores();
+		
 	}
 	
 	public List<Usuario> getMonitoresList() {
+		monitoresList = dao.listarMonitores();
 		return monitoresList;
 	}
 	
@@ -39,10 +43,18 @@ public class MostrarMonitoresMB implements Serializable {
 		return monitorSelecionado;
 	}
 	
-	public void setmonitorSelecionado(Usuario monitorSelecionado) {
+	public void setMonitorSelecionado(Usuario monitorSelecionado) {
 		this.monitorSelecionado = monitorSelecionado;
 	}
-
+	
+	public Monitorado getNovoMonitorado() {
+		return novoMonitorado;
+	}
+	
+	public void setNovoMonitorado(Monitorado novoMonitorado) {
+		this.novoMonitorado = novoMonitorado;
+	}
+	
 	
 	public void excluirMonitorSelecionado() {
 		if(monitoresList.contains(monitorSelecionado)) {
@@ -51,7 +63,17 @@ public class MostrarMonitoresMB implements Serializable {
 		dao.excluirUsuario(monitorSelecionado);
 	}
 	
-	public void adicionarMonitorado(Monitorado monitorado) {
+	public void adicionarMonitoradoALista() {
+		Monitorado monitorado =  null;
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> params = fc.getExternalContext()
+				.getRequestParameterMap();
+		String monitoradoId = params.get("monitoradoId");
+		if (monitoradoId != null) {
+			monitorado = dao.getMonitoradoByPrimaryKey(Long
+					.parseLong(monitoradoId));
+		}
 		monitorSelecionado.setMonitorados(monitorado);
+		dao.editarUsuario(monitorSelecionado);
 	}
 }

@@ -65,7 +65,7 @@ public abstract class AbstractDao<T extends AbstractEntity> implements
 		return em.find(persistentClass, entity.getId());
 	}
 	
-	public T getByPrimaryKey(int key) {
+	public T getByPrimaryKey(Long key) {
 		return em.find(persistentClass, key);
 	}
 	

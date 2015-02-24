@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 
-public abstract class AbstractEntity<T> implements Serializable {
+public abstract class AbstractEntity implements Serializable {
 	/**
 	 * 
 	 */
@@ -26,7 +26,7 @@ public abstract class AbstractEntity<T> implements Serializable {
 			return false;
 		if(getClass() != obj.getClass())
 			return false;
-		AbstractEntity<T> other = (AbstractEntity<T>) obj;
+		AbstractEntity other = (AbstractEntity) obj;
 		if(getId() == null) {
 			if(other.getId() != null)
 				return false;
@@ -35,7 +35,7 @@ public abstract class AbstractEntity<T> implements Serializable {
 		return true;
 	}
 	
-	public abstract T getId();
+	public abstract Long getId();
 	
 	
 }

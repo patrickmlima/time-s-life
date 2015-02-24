@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 import model.dao.AbstractEntity;
 
 @Entity
-public class Dado extends AbstractEntity<Long> {
+public class Dado extends AbstractEntity {
 	/**
 	 * 
 	 */

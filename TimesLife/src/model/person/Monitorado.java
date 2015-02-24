@@ -104,7 +104,6 @@ public class Monitorado extends Pessoa implements Monitoravel {
 	public void setMonitores(Usuario monitor) {
 		if(!monitores.contains(monitor)) {
 			monitores.add(monitor);
-			monitor.setMonitorados(this);
 		}
 	}
 }

@@ -52,6 +52,10 @@ public class ServicoDAO implements Serializable {
 		}
 	}
 	
+	public Monitorado getMonitoradoByPrimaryKey(Long id) {
+		return monitoradoDao.getByPrimaryKey(id);
+	}
+	
 	//---------------------------------------------------
 	public boolean salvarUsuario(Usuario usuario) {
 		try {
@@ -86,6 +90,10 @@ public class ServicoDAO implements Serializable {
 		} catch(Exception e) {
 			return null;
 		}
+	}
+	
+	public Usuario getMonitorByPrimaryKey(Long key) {
+		return usuarioDao.getByPrimaryKey(key);
 	}
 	
 

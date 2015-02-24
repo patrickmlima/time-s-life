@@ -20,7 +20,7 @@ public class CadastrarMonitoradoMB implements Serializable {
 	private Monitorado monitorado = new Monitorado();
 	//data de nascimento do monitorado
 	private Date dataNasc;
-	private Usuario monitor;
+	private String monitorId;
 	
 	private ServicoDAO dao = new ServicoDAO();
 
@@ -43,12 +43,12 @@ public class CadastrarMonitoradoMB implements Serializable {
 		this.dataNasc = dataNasc;
 	}
 	
-	public Usuario getMonitor() {
-		return monitor;
+	public String getMonitor() {
+		return monitorId;
 	}
 
-	public void setMonitor(Usuario monitor) {
-		this.monitor = monitor;
+	public void setMonitor(String monitorId) {
+		this.monitorId = monitorId;
 	}
 
 	public ServicoDAO getDao() {
@@ -65,6 +65,9 @@ public class CadastrarMonitoradoMB implements Serializable {
 			if (valida()) {
 				this.monitorado.setDataNasc(dataNasc);
 				this.monitorado.calcularBatimentosIdeais();
+				Usuario monitor = dao.getMonitorByPrimaryKey(Long.parseLong(monitorId));
+				monitor.setMonitorados(monitorado);
+				dao.editarUsuario(monitor);
 				this.monitorado.setMonitores(monitor);
 				dao.salvarMonitorado(monitorado);
 				DialogMB.showMessage("Parabens", "Monitorado cadastrado com sucesso!", "dlgOk");

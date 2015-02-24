@@ -2,9 +2,11 @@ package servico;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import model.person.Monitorado;
 import model.person.Usuario;
@@ -24,7 +26,7 @@ public class MostrarMonitoradoMB implements Serializable{
 	private ServicoDAO dao = new ServicoDAO();
 
 	public MostrarMonitoradoMB() {
-		monitoradosList = dao.listarMonitorados();
+
 	}
 	
 	public List<Usuario> getMonitoresList() {
@@ -36,11 +38,23 @@ public class MostrarMonitoradoMB implements Serializable{
 	}
 	
 	public List<Monitorado> getMonitoradosList() {
+		monitoradosList = dao.listarMonitorados();
 		return monitoradosList;
 	}
 	
 	public void setMonitoradosList(List<Monitorado> monitoradosList) {
 		this.monitoradosList = monitoradosList;
+	}
+	
+	private void checkMonitoradoIdParameter() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> params = fc.getExternalContext()
+				.getRequestParameterMap();
+		String monitoradoId = params.get("monitoradoId");
+		if (monitoradoId != null) {
+			monitoradoSelecionado = dao.getMonitoradoByPrimaryKey(Long
+					.parseLong(monitoradoId));
+		}
 	}
 	
 	public Monitorado getMonitoradoSelecionado() {
@@ -62,5 +76,4 @@ public class MostrarMonitoradoMB implements Serializable{
 		dao.editarMonitorado(monitoradoSelecionado);
 		DialogMB.showMessage(" ", "Dados do monitorado editados", "dlgOk");
 	}
-
 }
