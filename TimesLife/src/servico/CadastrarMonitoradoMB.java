@@ -1,6 +1,7 @@
 package servico;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -69,12 +70,11 @@ public class CadastrarMonitoradoMB implements Serializable {
 				monitor.setMonitorados(monitorado);
 				dao.editarUsuario(monitor);
 				this.monitorado.setMonitores(monitor);
-				dao.salvarMonitorado(monitorado);
 				DialogMB.showMessage("Parabens", "Monitorado cadastrado com sucesso!", "dlgOk");
 				limpar();
 			}
 			else {
-				DialogMB.showMessage("Monitorado não cadastrado", "A altura e/ou peso estão incorretos.", "dlgOk");
+				DialogMB.showMessage("Monitorado não cadastrado", "Dados incorretos.", "dlgOk");
 			}
 		} catch (Exception e) {
 			DialogMB.showMessage("Falha", "Monitorado não pôde ser cadastrado.", "dlgOk");
@@ -91,8 +91,10 @@ public class CadastrarMonitoradoMB implements Serializable {
 	}
 	
 	private boolean valida() {
-		if ((monitorado.getAltura() > 0) && (monitorado.getPeso() > 0))
-			return true;
+		if ((monitorado.getAltura() > 0) && (monitorado.getPeso() > 0)) {
+			if(Calendar.getInstance().getTime().after(dataNasc))
+				return true;
+		}
 		return false;
 	}
 
