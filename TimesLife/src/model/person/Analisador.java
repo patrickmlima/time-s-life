@@ -8,9 +8,9 @@ public class Analisador {
 	
 	public void classificar(Monitorado monitorado, Dado dado) {
 		if(dado.getBpm() > monitorado.getBATIMENTO_IDEAL_MAXIMO()) {
-			//batimentos altos
+			System.out.print("Batimento acelerados");
 		} else if(dado.getBpm() < monitorado.getBATIMENTO_IDEAL_MINIMO()) {
-			//batimentos baixos
+			System.out.print("Batimento desacelerados");
 		}
 	}
 	
