@@ -92,9 +92,16 @@ public class ServicoDAO implements Serializable {
 		}
 	}
 	
+	public List<Monitorado> listarMonitorados(Usuario monitor) {
+		try {
+			return monitor.getMonitorados();
+		} catch(Exception e) {
+			return null;
+		}
+	}
+	
 	public Usuario getMonitorByPrimaryKey(Long key) {
 		return usuarioDao.getByPrimaryKey(key);
 	}
-	
 
 }
