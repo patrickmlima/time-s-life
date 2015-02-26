@@ -18,61 +18,53 @@ public class MostrarMonitoresMB implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private List<Usuario> monitoresList;
 	private Usuario monitorSelecionado;
-	
-	private Monitorado novoMonitorado;
-	
+
+	private String novoMonitorado;
+
 	private ServicoDAO dao = new ServicoDAO();
-	
+
 	public MostrarMonitoresMB() {
-		
+
 	}
-	
+
 	public List<Usuario> getMonitoresList() {
 		monitoresList = dao.listarMonitores();
 		return monitoresList;
 	}
-	
+
 	public void setMonitoresList(List<Usuario> monitoresList) {
 		this.monitoresList = monitoresList;
 	}
-	
+
 	public Usuario getMonitorSelecionado() {
 		return monitorSelecionado;
 	}
-	
+
 	public void setMonitorSelecionado(Usuario monitorSelecionado) {
 		this.monitorSelecionado = monitorSelecionado;
 	}
-	
-	public Monitorado getNovoMonitorado() {
+
+	public String getNovoMonitorado() {
 		return novoMonitorado;
 	}
-	
-	public void setNovoMonitorado(Monitorado novoMonitorado) {
+
+	public void setNovoMonitorado(String novoMonitorado) {
 		this.novoMonitorado = novoMonitorado;
 	}
-	
-	
+
 	public void excluirMonitorSelecionado() {
-		if(monitoresList.contains(monitorSelecionado)) {
+		if (monitoresList.contains(monitorSelecionado)) {
 			monitoresList.remove(monitorSelecionado);
 		}
 		dao.excluirUsuario(monitorSelecionado);
 	}
-	
+
 	public void adicionarMonitoradoALista() {
-		Monitorado monitorado =  null;
-		FacesContext fc = FacesContext.getCurrentInstance();
-		Map<String, String> params = fc.getExternalContext()
-				.getRequestParameterMap();
-		String monitoradoId = params.get("monitoradoId");
-		if (monitoradoId != null) {
-			monitorado = dao.getMonitoradoByPrimaryKey(Long
-					.parseLong(monitoradoId));
-		}
+		Monitorado monitorado = dao.getMonitoradoByPrimaryKey(Long
+				.parseLong(novoMonitorado));
 		monitorSelecionado.setMonitorados(monitorado);
 		dao.editarUsuario(monitorSelecionado);
 	}
