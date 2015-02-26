@@ -14,8 +14,8 @@
 		<h:form id="formSelectMonitorado" prependId="false">
 			<h:panelGrid columns="1" columnClasses="item">
 				<p:selectOneMenu id="monitorados"
-					value="#{mostrarMonitoresMB.novoMonitorado}" immediate="true">
-					<f:selectItems value="#{mostrarMonitoradoMB.monitoradosList}"
+					value="${mostrarMonitoresMB.novoMonitorado}" immediate="true">
+					<f:selectItems value="${mostrarMonitoradoMB.monitoradosList}"
 						var="monitorado" itemValue="#{monitorado}"
 						itemLabel="#{monitorado.id} - #{monitorado.nome}" />
 				</p:selectOneMenu>
