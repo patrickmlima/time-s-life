@@ -33,7 +33,7 @@ public class SimulaEnvio {
 
 			Dado dado;
 			JSONObject JSONDado;
-			dado = new Dado(4l, 80, 0, 0);
+			dado = new Dado(8l, 80, 0, 0);
 			JSONDado = new JSONObject();
 			JSONDado.put("idMonitorado", dado.getMonitorado().getId());
 			JSONDado.put("bpm", dado.getBpm());
