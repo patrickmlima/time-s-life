@@ -1,5 +1,6 @@
 package model.person;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -57,11 +58,15 @@ public class Dado extends AbstractEntity {
 		this.bpm = bpm;
 	}
 	
-	public Calendar getDate() {
+	public Calendar getTime() {
 		return time;
 	}
 	
-	public void setDate(Calendar time) {
+	public String getTimeString() {
+		return (new SimpleDateFormat("dd/MM/yyyy hh:mm:ss")).format(time.getTime());
+	}
+	
+	public void setTime(Calendar time) {
 		this.time = time;
 	}
 
