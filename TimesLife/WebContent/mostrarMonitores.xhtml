@@ -63,6 +63,10 @@
 						<h:outputText value="Telefone" />
 						<h:outputText
 							value="#{mostrarMonitoresMB.monitorSelecionado.telefone}" />
+
+<!-- 					<h:outputText value="Monitorados" />
+						<h:outputText
+							value="#{mostrarMonitoresMB.monitorSelecionado.monitorados}" /> -->
 					</p:panelGrid>
 
 					<p:panelGrid columns="1" columnClasses="button"
@@ -75,7 +79,7 @@
 						</p:commandButton>
 
 						<p:commandButton value="Ver sua lista de monitorados"
-							icon="ui-icon-note" />
+							icon="ui-icon-note" action="monitoradosList.xhtml" />
 
 						<p:commandButton value="Adicionar monitorado a sua lista"
 							icon="ui-icon-plus" action="incluirMonitoradoLista.xhtml"

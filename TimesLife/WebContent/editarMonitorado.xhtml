@@ -28,8 +28,8 @@
 
 				<p:outputLabel value="Data de nascimento:" for="dtNascimento" />
 				<p:calendar id="dtNascimento"
-					value="#{cadastrarMonitoradoMB.dataNasc}" pattern="dd/MM/yyyy"
-					mask="true" locale="pt_BR" required="true" />
+					value="#{mostrarMonitoradoMB.monitoradoSelecionado.dataNasc.time}"
+					pattern="dd/MM/yyyy" mask="true" locale="pt_BR" required="true" />
 				<p:message for="dtNascimento" />
 				<p:tooltip id="toolTipDtNascimento" for="dtNascimento"
 					value="Selecione a data de nascimento" />
@@ -79,7 +79,7 @@
 						headerClass="dialogOk" style="text-align:center">
 						<p:outputLabel value="#{dialogMB.mensagemDialog}" />
 						<p:commandButton value="Ok" icon="ui-icon-circle-check"
-							onclick="PF('dlgOk').hide();" />
+							onclick="PF('dlg').hide();" />
 					</h:panelGrid>
 				</h:form>
 			</p:dialog>

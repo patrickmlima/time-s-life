@@ -13,15 +13,16 @@
 	<ui:define name="conteudo">
 		<h:form id="formSelectMonitorado" prependId="false">
 			<h:panelGrid columns="1" columnClasses="item">
+			
 				<p:selectOneMenu id="monitorados"
-					value="${mostrarMonitoresMB.novoMonitorado}" immediate="true">
+					value="#{mostrarMonitoresMB.novoMonitorado}">
 					<f:selectItems value="${mostrarMonitoradoMB.monitoradosList}"
-						var="monitorado" itemValue="#{monitorado}"
+						var="monitorado" itemValue="#{monitorado.id}"
 						itemLabel="#{monitorado.id} - #{monitorado.nome}" />
 				</p:selectOneMenu>
 
 				<p:commandButton value="Adicionar"
-					actionListener="#{mostrarMonitoresMB.adicionarMonitoradoALista}"
+					action="#{mostrarMonitoresMB.adicionarMonitoradoALista}"
 					immediate="true">
 				</p:commandButton>
 

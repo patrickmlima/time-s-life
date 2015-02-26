@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Lista de monitorados</title>
+</h:head>
+<ui:composition template="_templateAdminMenu.xhtml">
+	<ui:define name="conteudo">
+
+		<h:form id="formMonitoradosList" prependId="false">
+
+			<p:dataTable id="monitoradosTable" var="monitorado"
+				value="#{mostrarMonitoresMB.monitorSelecionado.monitorados}"
+				emptyMessage="Você ainda não tem monitorados em sua lista">
+				<p:column headerText="ID">
+					<p:outputLabel id="id" value="#{monitorado.id}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<p:outputLabel id="nome" value="#{monitorado.nome}" />
+				</p:column>
+				<p:column headerText="Telefone">
+					<p:outputLabel id="telefone" value="#{monitorado.telefone}" />
+				</p:column>
+				<p:column headerText="Data de nascimento">
+					<p:outputLabel id="dtNascimento"
+						value="#{monitorado.dataNascString}" />
+				</p:column>
+				<p:column headerText="Altura">
+					<p:outputLabel id="altura" value="#{monitorado.altura}" />
+				</p:column>
+				<p:column headerText="Peso">
+					<p:outputLabel id="peso" value="#{monitorado.peso}"></p:outputLabel>
+				</p:column>
+				<p:column>
+					<p:commandButton value="Iniciar Monitoramento"
+						action="#{monitoramentoMB.carregarDados(monitorado)}">
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

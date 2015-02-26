@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Adicionar monitorado</title>
+</h:head>
+<ui:composition template="_templateAdminMenu.xhtml">
+	<ui:define name="conteudo">
+
+		<f:facet name="header">
+			<p:outputLabel
+				value="#{monitoramentoMB.monitorado.nome} - Telefone: #{monitoramentoMB.monitorado.telefone}" />
+		</f:facet>
+		
+		<p:dataTable id="dadosTalbe" var="dado"
+			value="#{monitoramentoMB.dadosMonitorado}">
+			<p:column headerText="BPM">
+				<p:outputLabel value="#{dado.bpm}" />
+			</p:column>
+			<p:column headerText="Data">
+				<p:outputLabel value="#{dado.timeString}" />
+			</p:column>
+		</p:dataTable>
+
+
+	</ui:define>
+</ui:composition>
+</html>
