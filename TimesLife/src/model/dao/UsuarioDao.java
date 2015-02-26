@@ -23,14 +23,7 @@ public class UsuarioDao extends AbstractDao<Usuario>{
 		return q.getResultList();
 	}
 	
-	public List<Monitorado> listarMonitorados(Usuario monitor) {
-		EntityManager em = new JPAUtil().getEntityManager();
-		Query q = em.createQuery("Select m from Usuario_Monitorado");
-//		q.setParameter("vId", monitor.getId());
-		List list = q.getResultList();
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		return null;
+	public List<Monitorado> listarMonitorados(Usuario monitor) {		
+		return monitor.getMonitorados();
 	}
 }
