@@ -2,8 +2,6 @@ package model.dao;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-
 public abstract class AbstractEntity implements Serializable {
 	/**
 	 * 

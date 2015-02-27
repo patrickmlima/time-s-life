@@ -15,6 +15,7 @@ public class DadoDAO extends AbstractDao<Dado>{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unchecked")
 	public List<Dado> listarDados(Monitorado monitorado) {
 		EntityManager em = new JPAUtil().getEntityManager();
 		

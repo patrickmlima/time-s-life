@@ -16,6 +16,7 @@ public class UsuarioDao extends AbstractDao<Usuario>{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unchecked")
 	public List<Usuario> listarMonitores() {
 		EntityManager em = new JPAUtil().getEntityManager();
 		Query q = em.createQuery("Select u from Usuario u where u.tipo=:vTipo");

@@ -12,19 +12,24 @@
 <ui:composition template="_templateAdminMenu.xhtml">
 	<ui:define name="conteudo">
 		<h:form id="formSelectMonitorado" prependId="false">
-			<h:panelGrid columns="1" columnClasses="item">
-			
-				<p:selectOneMenu id="monitorados"
-					value="#{mostrarMonitoresMB.novoMonitorado}">
-					<f:selectItems value="${mostrarMonitoradoMB.monitoradosList}"
-						var="monitorado" itemValue="#{monitorado.id}"
-						itemLabel="#{monitorado.id} - #{monitorado.nome}" />
+		
+			<h:panelGrid id="gridMonitorado" columns="3" columnClasses="item"
+				rowClasses="normal" headerClass="adicionarMonitoradoALista" >
+				<p:selectOneMenu id="monitoradosMenu"
+					value="#{mostrarMonitoresMB.novoMonitorado}" required="true">
+					<f:selectItems value="#{mostrarMonitoradoMB.monitoradosList}"
+						var="monitorado" itemLabel="#{monitorado.nome}"
+						itemValue="#{monitorado.id}" />
 				</p:selectOneMenu>
+				<p:message for="monitoradosMenu" />
+				<p:tooltip for="monitoradosMenu" value="Selecione o monitorado para adicionar a sua lista" />
 
-				<p:commandButton value="Adicionar"
+				<p:commandButton id="add" value="Adicionar"
 					action="#{mostrarMonitoresMB.adicionarMonitoradoALista}"
 					immediate="true">
 				</p:commandButton>
+				<p:tooltip for="add" value="Clique para adicionar o monitorado a sua lista" />
+				<p:outputLabel value="" />
 
 				<p:outputLabel value="Monitor" for="monitor" />
 				<p:inputText id="monitor"
@@ -36,21 +41,20 @@
 
 			</h:panelGrid>
 
-
-			<p:dialog id="dlgIncluido" header="#{dialogMB.tituloDialog}"
-				widgetVar="dlgIncluido" modal="true" resizable="false"
-				draggable="false" icon="ui-icon-disk">
-				<h:form>
-					<h:panelGrid id="dlg" columns="1" rowClasses="normal"
-						headerClass="dialogIncluido" style="text-align:center">
-						<p:outputLabel value="#{dialogMB.mensagemDialog}" />
-						<p:commandButton value="Ok" icon="ui-icon-circle-check"
-							action="mostrarMonitores.xhtml" />
-					</h:panelGrid>
-				</h:form>
-			</p:dialog>
-
 		</h:form>
+
+		<p:dialog id="dlgIncluido" header="#{dialogMB.tituloDialog}"
+			widgetVar="dlgIncluido" modal="true" resizable="false"
+			draggable="false" icon="ui-icon-disk">
+			<h:form>
+				<h:panelGrid id="dlg" columns="1" rowClasses="normal"
+					headerClass="dialogIncluido" style="text-align:center">
+					<p:outputLabel value="#{dialogMB.mensagemDialog}" />
+					<p:commandButton value="Ok" icon="ui-icon-circle-check"
+						action="mostrarMonitores.xhtml" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
 
 	</ui:define>
 </ui:composition>

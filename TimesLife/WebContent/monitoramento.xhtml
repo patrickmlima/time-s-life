@@ -10,23 +10,26 @@
 </h:head>
 <ui:composition template="_templateAdminMenu.xhtml">
 	<ui:define name="conteudo">
-
-		<f:facet name="header">
-			<p:outputLabel
-				value="#{monitoramentoMB.monitorado.nome} - Telefone: #{monitoramentoMB.monitorado.telefone}" />
-		</f:facet>
-		
-		<p:dataTable id="dadosTalbe" var="dado"
-			value="#{monitoramentoMB.dadosMonitorado}">
-			<p:column headerText="BPM">
-				<p:outputLabel value="#{dado.bpm}" />
-			</p:column>
-			<p:column headerText="Data">
-				<p:outputLabel value="#{dado.timeString}" />
-			</p:column>
-		</p:dataTable>
-
-
+		<p:panelGrid id="titleGrid" columns="1" columnClasses="monitorado">
+			<f:facet name="monitoramentoHeader">
+				<p:outputLabel
+					value="Monitorado: #{monitoramentoMB.monitorado.nome} - Telefone: #{monitoramentoMB.monitorado.telefone}" />
+			</f:facet>
+		</p:panelGrid>
+		<h:form id="formMonitoramento">
+			<f:ajax event="blur" listener="#{monitoramentoMB.refresh}"
+				render=":formMonitoramento:dadosTable" immediate="true">
+				<p:dataTable id="dadosTable" var="dado"
+					value="#{monitoramentoMB.dadosMonitorado}">
+					<p:column headerText="BPM">
+						<p:outputLabel value="#{dado.bpm}" />
+					</p:column>
+					<p:column headerText="Data">
+						<p:outputLabel value="#{dado.timeString}" />
+					</p:column>
+				</p:dataTable>
+			</f:ajax>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

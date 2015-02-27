@@ -15,6 +15,7 @@ import model.dao.MonitoradoDao;
 import model.person.Analisador;
 import model.person.Dado;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
@@ -50,7 +51,6 @@ public class Server extends HttpServlet {
 		String jsonDadoStr = "";
 		if (br != null) {
 			jsonDadoStr = br.readLine();
-			System.out.println(jsonDadoStr);
 			JSONObject jsonDado = null;
 			DadoDAO dao = null;
 			Dado monitoradoDado = null;
