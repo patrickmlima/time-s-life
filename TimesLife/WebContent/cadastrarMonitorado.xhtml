@@ -10,10 +10,11 @@
 </h:head>
 <ui:composition template="_templateAdminMenu.xhtml">
 	<ui:define name="conteudo">
+		<h:outputScript library="js" name="calendar_pt_BR.js" />
 		<h:form id="form1" prependId="false">
 			<h:panelGrid id="grid" columns="4"
 				columnsClasses="colunaEsquerda,colunaDireita" rowClasses="normal"
-				headerClass="cadastroMonitorado" >
+				headerClass="cadastroMonitorado">
 				<f:facet name="header">
 					<p:outputLabel value="Cadastro de Monitorado" />
 				</f:facet>
@@ -26,48 +27,50 @@
 					value="Insira o nome completo do usuário" />
 
 				<p:outputLabel value="Data de nascimento:" for="dtNascimento" />
-				<p:calendar id="dtNascimento" value="#{cadastrarMonitoradoMB.dataNasc}"
-					pattern="dd/MM/yyyy" mask="true" locale="pt_BR" required="true" />
+				<p:calendar id="dtNascimento"
+					value="#{cadastrarMonitoradoMB.dataNasc}" pattern="dd/MM/yyyy"
+					mask="true" locale="pt_BR" required="true" />
 				<p:message for="dtNascimento" />
 				<p:tooltip id="toolTipDtNascimento" for="dtNascimento"
 					value="Selecione a data de nascimento" />
 
 				<p:outputLabel value="Endereço:" for="endereco" />
 				<p:inputText id="endereco"
-					value="#{cadastrarMonitoradoMB.monitorado.endereco}" required="true" />
+					value="#{cadastrarMonitoradoMB.monitorado.endereco}"
+					required="true" />
 				<p:message for="endereco" />
 				<p:tooltip id="toolTipEndereco" for="endereco"
 					value="Digite o endereço do monitorado" />
 
 				<p:outputLabel value="Telefone:" for="telefone" />
 				<p:inputMask id="telefone"
-					value="#{cadastrarMonitoradoMB.monitorado.telefone}" required="true"
-					mask="+[99](99)99999-9999" slotChar="_"/>
+					value="#{cadastrarMonitoradoMB.monitorado.telefone}"
+					required="true" mask="+[99](99)99999-9999" slotChar="_" />
 				<p:message for="telefone" />
 				<p:tooltip id="toolTipTelefone" for="telefone"
 					value="Digite o telefone do monitorado" />
 
 				<p:outputLabel value="Altura:" for="altura" />
-				<p:inputText id="altura" value="#{cadastrarMonitoradoMB.monitorado.altura}"
-					required="true" />
+				<p:inputText id="altura"
+					value="#{cadastrarMonitoradoMB.monitorado.altura}" required="true" />
 				<p:message for="altura" />
-				
+
 				<p:tooltip id="toolTipAltura" for="altura"
 					value="Digite a altura do monitorado" />
 
 				<p:outputLabel value="Peso:" for="peso" />
-				<p:inputText id="peso" value="#{cadastrarMonitoradoMB.monitorado.peso}"
-					required="true" />
+				<p:inputText id="peso"
+					value="#{cadastrarMonitoradoMB.monitorado.peso}" required="true" />
 				<p:message for="peso" />
 				<p:tooltip id="toolTipPeso" for="peso"
 					value="Digite o peso do monitorado" />
 
- 				<p:outputLabel value="Monitor" for="monitor" />
+				<p:outputLabel value="Monitor" for="monitor" />
 				<p:selectOneMenu id="monitor"
-					value="#{cadastrarMonitoradoMB.monitor}"
-					required="true">
+					value="#{cadastrarMonitoradoMB.monitor}" required="true">
 					<f:selectItems value="#{mostrarMonitoresMB.monitoresList}"
-						var="monitor" itemLabel="#{monitor.nome}" itemValue="#{monitor.id}" />
+						var="monitor" itemLabel="#{monitor.nome}"
+						itemValue="#{monitor.id}" />
 				</p:selectOneMenu>
 				<p:message for="monitor" />
 				<p:tooltip id="toolTipMonitor" for="monitor"
@@ -84,7 +87,8 @@
 					<h:panelGrid id="dlg" columns="1" rowClasses="normal"
 						headerClass="dialogOk" style="text-align:center">
 						<p:outputLabel value="#{dialogMB.mensagemDialog}" />
-						<p:commandButton value="Ok" icon="ui-icon-circle-check" onclick="PF('dlgOk').hide();" />
+						<p:commandButton value="Ok" icon="ui-icon-circle-check"
+							onclick="PF('dlgOk').hide();" />
 					</h:panelGrid>
 				</h:form>
 			</p:dialog>

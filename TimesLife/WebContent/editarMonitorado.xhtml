@@ -10,6 +10,7 @@
 </h:head>
 <ui:composition template="_templateAdminMenu.xhtml">
 	<ui:define name="conteudo">
+		<h:outputScript library="js" name="calendar_pt_BR.js" />
 		<h:form id="form1" prependId="false">
 			<h:panelGrid id="grid" columns="4"
 				columnsClasses="colunaEsquerda,colunaDireita" rowClasses="normal"
@@ -71,20 +72,20 @@
 					action="#{mostrarMonitoradoMB.editarMonitorado}" update="grid dlg" />
 			</h:panelGrid>
 
-			<p:dialog id="dlg" header="#{dialogMB.tituloDialog}"
+			<p:dialog id="dlgOk" header="#{dialogMB.tituloDialog}"
 				widgetVar="dlgOk" modal="true" resizable="false" draggable="false"
 				icon="ui-icon-disk">
-				<h:form>
-					<h:panelGrid id="dlg" columns="1" rowClasses="normal"
-						headerClass="dialogOk" style="text-align:center">
-						<p:outputLabel value="#{dialogMB.mensagemDialog}" />
-						<p:commandButton value="Ok" icon="ui-icon-circle-check"
-							onclick="PF('dlg').hide();" />
-					</h:panelGrid>
-				</h:form>
+				<h:panelGrid id="dlg" columns="1" rowClasses="normal"
+					headerClass="dialogOk" style="text-align:center">
+					<p:outputLabel value="#{dialogMB.mensagemDialog}" />
+					<p:commandButton value="Ok" icon="ui-icon-circle-check"
+						action="#{mostrarMonitoradoMB.redirect}"
+						oncomplete="PF('dlgOk').hide();" />
+				</h:panelGrid>
 			</p:dialog>
 
 		</h:form>
+
 	</ui:define>
 </ui:composition>
 </html>

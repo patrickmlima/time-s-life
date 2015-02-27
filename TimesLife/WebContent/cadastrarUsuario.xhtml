@@ -11,6 +11,7 @@
 </h:head>
 <ui:composition template="_templateAdminMenu.xhtml">
 	<ui:define name="conteudo">
+		<h:outputScript library="js" name="calendar_pt_BR.js" />
 		<h:form id="form1" prependId="false">
 			<h:panelGrid id="grid" columns="4"
 				columnsClasses="colunaEsquerda,colunaDireita" rowClasses="normal"
@@ -20,8 +21,8 @@
 				</f:facet>
 
 				<p:outputLabel value="Nome:" for="nome" />
-				<p:inputText id="nome" size="50" value="#{cadastrarUsuarioMB.usuario.nome}"
-					required="true" />
+				<p:inputText id="nome" size="50"
+					value="#{cadastrarUsuarioMB.usuario.nome}" required="true" />
 				<p:message for="nome" />
 				<p:tooltip id="toolTipNome" for="nome"
 					value="Digite o nome do usuário" />
@@ -34,8 +35,8 @@
 					value="Selecione a data de nascimento do usuário" />
 
 				<p:outputLabel value="Endereço:" for="endereco" />
-				<p:inputText id="endereco" value="#{cadastrarUsuarioMB.usuario.endereco}"
-					required="true" />
+				<p:inputText id="endereco"
+					value="#{cadastrarUsuarioMB.usuario.endereco}" required="true" />
 				<p:message for="endereco" />
 				<p:tooltip id="toolTipEndereco" for="endereco"
 					value="Informe o endereço do usuário" />
@@ -43,19 +44,20 @@
 				<p:outputLabel value="Telefone:" for="telefone" />
 				<p:inputMask id="telefone"
 					value="#{cadastrarUsuarioMB.usuario.telefone}" required="true"
-					mask="+[99](99)99999-9999" slotChar="_"/>
+					mask="+[99](99)99999-9999" slotChar="_" />
 				<p:message for="telefone" />
 				<p:tooltip id="toolTipTelefone" for="telefone"
 					value="Digite o telefone do usuário" />
 
 				<p:outputLabel value="Tipo" for="tipo" />
-				<p:selectOneMenu id="tipo" value="#{cadastrarUsuarioMB.usuario.tipo}">
+				<p:selectOneMenu id="tipo"
+					value="#{cadastrarUsuarioMB.usuario.tipo}">
 					<f:selectItems value="#{cadastrarUsuarioMB.tipo}" var="tipo"
 						itemValue="#{tipo}" itemLabel="#{tipo.label}" />
 				</p:selectOneMenu>
 				<p:tooltip id="toolTipTipo" for="tipo"
 					value="Selecione o tipo de usuário a ser cadastrado" />
-					
+
 				<p:outputLabel value=" " />
 				<p:outputLabel value=" " />
 				<p:commandButton value="Cadastrar" icon="ui-icon-disk"
