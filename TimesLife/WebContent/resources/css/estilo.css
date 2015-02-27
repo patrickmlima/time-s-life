@@ -1,0 +1,15 @@
+#divPrincipal {
+	background-color: #4682B4;
+	border-style: groove;
+	border: 5px solid #3465a4;
+	border-top-left-radius: 16px;
+}
+
+#menuBar {
+	background-color: #708090;
+	border-style: double;
+}
+
+body {
+	background-color: #DCDCDC;
+}
