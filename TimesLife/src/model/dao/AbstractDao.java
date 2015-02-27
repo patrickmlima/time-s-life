@@ -25,6 +25,7 @@ public abstract class AbstractDao<T extends AbstractEntity> implements
 	public AbstractDao() {
 		init();
 	}
+	@SuppressWarnings("unchecked")
 	public void init() {
 		ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
 		persistentClass = (Class<T>) type.getActualTypeArguments()[0];
@@ -54,6 +55,7 @@ public abstract class AbstractDao<T extends AbstractEntity> implements
 		em.getTransaction().commit();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<T> listar() {
 		Query query = em.createQuery("Select t from " + persistentClass.getName() + " t" );
 		List<T> list = query.getResultList();
