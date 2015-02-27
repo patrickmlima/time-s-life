@@ -6,12 +6,14 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head />
+	<h:outputStylesheet library="css" name="estilo.css" />
+
 <h:body>
-	<div align="center">
+	<div align="center" id="divPrincipal">
 		<p:graphicImage library="img" name="logomarca.png" />
 	</div>
 	<div>
-		<p:menubar>
+		<p:menubar id="menuBar">
 			<p:submenu label="Cadastrar">
 				<p:menuitem value="Usuário" url="cadastrarUsuario.xhtml" />
 				<p:menuitem value="Monitorado" url="cadastrarMonitorado.xhtml" />
