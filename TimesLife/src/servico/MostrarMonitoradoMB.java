@@ -1,8 +1,8 @@
 package servico;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -46,17 +46,6 @@ public class MostrarMonitoradoMB implements Serializable{
 		this.monitoradosList = monitoradosList;
 	}
 	
-	private void checkMonitoradoIdParameter() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		Map<String, String> params = fc.getExternalContext()
-				.getRequestParameterMap();
-		String monitoradoId = params.get("monitoradoId");
-		if (monitoradoId != null) {
-			monitoradoSelecionado = dao.getMonitoradoByPrimaryKey(Long
-					.parseLong(monitoradoId));
-		}
-	}
-	
 	public Monitorado getMonitoradoSelecionado() {
 		return monitoradoSelecionado;
 	}
@@ -75,5 +64,14 @@ public class MostrarMonitoradoMB implements Serializable{
 	public void editarMonitorado() {
 		dao.editarMonitorado(monitoradoSelecionado);
 		DialogMB.showMessage(" ", "Dados do monitorado editados", "dlgOk");
+	}
+	
+	public void redirect() {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("mostrarMonitorados.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

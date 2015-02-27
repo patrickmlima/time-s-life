@@ -2,11 +2,9 @@ package servico;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import model.person.Monitorado;
 import model.person.Usuario;
@@ -63,9 +61,5 @@ public class MostrarMonitoresMB implements Serializable {
 	}
 
 	public void adicionarMonitoradoALista() {
-		Monitorado monitorado = dao.getMonitoradoByPrimaryKey(Long
-				.parseLong(novoMonitorado));
-		monitorSelecionado.setMonitorados(monitorado);
-		dao.editarUsuario(monitorSelecionado);
 	}
 }
